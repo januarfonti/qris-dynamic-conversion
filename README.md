@@ -16,6 +16,10 @@ A TypeScript library to convert static QRIS (Quick Response Code Indonesian Stan
 - 🪶 Lightweight with zero dependencies
 - 🧪 Thoroughly tested
 
+## Requirements
+
+- Node.js 18 or higher
+
 ## Installation
 
 ```bash
