@@ -1,0 +1,62 @@
+{
+  "name": "@januarfonti/qris-dynamic-conversion",
+  "version": "1.0.0",
+  "description": "QRIS Static to Dynamic Converter - Convert static QRIS codes to dynamic ones with customizable amount and fee",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "release": "npm run build && changeset publish"
+  },
+  "keywords": [
+    "qris",
+    "qr-code",
+    "payment",
+    "indonesia",
+    "dynamic-qris",
+    "fintech",
+    "qris-dynamic-conversion"
+  ],
+  "author": "Januar Fonti <github.com/januarfonti>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/januarfonti/qris-dynamic-conversion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/januarfonti/qris-dynamic-conversion/issues"
+  },
+  "homepage": "https://github.com/januarfonti/qris-dynamic-conversion#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.11.5",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vitest/coverage-v8": "^1.2.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
