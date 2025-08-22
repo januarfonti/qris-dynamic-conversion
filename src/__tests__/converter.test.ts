@@ -1,9 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { generateDynamicQRIS, validateQRIS } from '../converter'
+import { toCRC16 } from '../utils'
 
 describe('generateDynamicQRIS', () => {
-  // Sample static QRIS for testing
-  const validStaticQRIS = '00020101021126370016ID.CO.TELKOM.WWW011893600898021234567802150000000000000000303UME51440014ID.CO.QRIS.WWW0215ID20200185853940303UME5204549953033605802ID5303360ABC1'
+  // Real static QRIS for testing - includes 010211 tag for static QRIS
+  const validStaticQRIS = '00020101021126610014COM.GO-JEK.WWW01189360091434035299640210G4035299640303UMI51440014ID.CO.QRIS.WWW0215ID10253753027970303UMI5204581553033605802ID5924Anjani Falisha Kikanaya,6006MALANG61056513962070703A0163042735'
   
   it('should convert static QRIS to dynamic QRIS', () => {
     const result = generateDynamicQRIS({
@@ -30,9 +31,9 @@ describe('generateDynamicQRIS', () => {
       fee: '2.5'
     })
     
-    // Should contain percentage fee tag
-    expect(result).toContain('5502035703') // 55020357 + length 03
-    expect(result).toContain('2.5')
+    // Should contain percentage fee tag structure
+    expect(result).toContain('55020357') // Percentage fee tag
+    expect(result).toContain('032.5') // Length 03 + value 2.5
   })
 
   it('should handle fixed amount fee correctly', () => {
@@ -43,9 +44,9 @@ describe('generateDynamicQRIS', () => {
       fee: '500'
     })
     
-    // Should contain fixed fee tag
-    expect(result).toContain('5502025603') // 55020256 + length 03
-    expect(result).toContain('500')
+    // Should contain fixed fee tag structure
+    expect(result).toContain('55020256') // Fixed amount fee tag
+    expect(result).toContain('03500') // Length 03 + value 500
   })
 
   it('should handle zero fee', () => {
@@ -133,8 +134,6 @@ describe('validateQRIS', () => {
   it('should validate a properly formatted QRIS with correct CRC', () => {
     // Create a valid QRIS by generating one
     const validQRIS = '00020101021126370016ID.CO.TELKOM.WWW011893600898021234567802150000000000000000303UME51440014ID.CO.QRIS.WWW0215ID20200185853940303UME5204549953033605802ID5303360'
-    // Calculate correct CRC for this data
-    const { toCRC16 } = require('../utils')
     const correctCRC = toCRC16(validQRIS)
     const qrisWithCorrectCRC = validQRIS + correctCRC
     

@@ -27,7 +27,11 @@ export function toCRC16(data: string): string {
     }
   }
   
-  return ((crc & 0xFFFF).toString(16).toUpperCase()).padStart(4, '0')
+  // Ensure we only keep 16 bits
+  crc = crc & 0xFFFF
+  
+  // Convert to hex and pad with zeros
+  return crc.toString(16).toUpperCase().padStart(4, '0')
 }
 
 /**

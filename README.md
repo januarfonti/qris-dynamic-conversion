@@ -222,6 +222,47 @@ The library performs the following operations:
 6. **Recalculates** the CRC16 checksum for the modified data
 7. **Returns** the complete dynamic QRIS string
 
+## Development
+
+### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/januarfonti/qris-dynamic-conversion.git
+cd qris-dynamic-conversion
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run tests:
+```bash
+npm test
+```
+
+4. Build the library:
+```bash
+npm run build
+```
+
+### Testing with Real QRIS Data
+
+To test with your actual QRIS data, replace the sample QRIS in the tests with your real static QRIS string. The QRIS must:
+- Contain the tag "010211" (static QRIS identifier)
+- Include "5802ID" (Indonesia country code)
+- End with a valid 4-character CRC16 checksum
+
+Example test with your QRIS:
+```typescript
+const yourStaticQRIS = 'YOUR_ACTUAL_STATIC_QRIS_HERE'
+const dynamicQRIS = generateDynamicQRIS({
+  qrisStatic: yourStaticQRIS,
+  amount: 50000
+})
+```
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.

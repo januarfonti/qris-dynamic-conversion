@@ -42,6 +42,9 @@ export function generateDynamicQRIS(options: GenerateDynamicQRISOptions): string
     throw new Error('Invalid QRIS format: missing or duplicate country code')
   }
   
+  const beforeCountryCode = parts[0]!
+  const afterCountryCode = parts[1]!
+  
   // Build amount tag (tag 54)
   let amountTag = '54' + pad(amountStr.length) + amountStr
   
@@ -61,7 +64,7 @@ export function generateDynamicQRIS(options: GenerateDynamicQRISOptions): string
   const middlePart = amountTag + taxTag + '5802ID'
   
   // Combine all parts
-  const outputWithoutCRC = parts[0].trim() + middlePart + parts[1].trim()
+  const outputWithoutCRC = beforeCountryCode.trim() + middlePart + afterCountryCode.trim()
   
   // Calculate and append CRC
   const crc = toCRC16(outputWithoutCRC)
