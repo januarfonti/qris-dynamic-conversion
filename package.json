@@ -1,6 +1,6 @@
 {
   "name": "@januarfonti/qris-dynamic-conversion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "QRIS Static to Dynamic Converter - Convert static QRIS codes to dynamic ones with customizable amount and fee",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
