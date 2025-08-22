@@ -39,8 +39,8 @@ describe('Basic QRIS conversion', () => {
       expect(result).toContain('25000')
       
     } catch (error) {
-      // If it fails, log the error for debugging
-      console.log('Conversion error:', error)
+      // If it fails, the test will catch it
+      expect(error).toBeUndefined()
     }
   })
 })

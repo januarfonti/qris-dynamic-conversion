@@ -26,13 +26,13 @@ describe('pad', () => {
 
 describe('toCRC16', () => {
   it('should calculate correct CRC16 for known values', () => {
-    // Test with a simple string - let's verify what our implementation actually returns
+    // Test with a simple string - verify CRC16-CCITT
     const result1 = toCRC16('123456789')
-    console.log('CRC16 of "123456789":', result1)
+    expect(result1).toBe('29B1')
     
     // Test with empty string
     const result2 = toCRC16('')
-    console.log('CRC16 of empty string:', result2)
+    expect(result2).toBe('FFFF')
     
     // For now, just check format
     expect(result1).toMatch(/^[0-9A-F]{4}$/)

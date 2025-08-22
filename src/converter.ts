@@ -1,4 +1,4 @@
-import { GenerateDynamicQRISOptions, QRISValidationResult } from './types'
+import type { GenerateDynamicQRISOptions, QRISValidationResult } from './types'
 import { pad, toCRC16, isValidQRIS } from './utils'
 
 /**
@@ -46,7 +46,7 @@ export function generateDynamicQRIS(options: GenerateDynamicQRISOptions): string
   const afterCountryCode = parts[1]!
   
   // Build amount tag (tag 54)
-  let amountTag = '54' + pad(amountStr.length) + amountStr
+  const amountTag = '54' + pad(amountStr.length) + amountStr
   
   // Build tax/fee tag if applicable (tag 55)
   let taxTag = ''

@@ -273,6 +273,26 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+### Releasing
+
+This project uses two methods for releasing:
+
+#### Automatic Release (Changesets)
+1. Create a changeset for your changes: `npx changeset`
+2. Commit the changeset file
+3. When merged to main, the GitHub Action will create a release PR
+4. Merge the release PR to publish to NPM
+
+#### Manual Release
+1. Go to Actions → Manual NPM Release
+2. Click "Run workflow"
+3. Select version type (patch, minor, major)
+4. The workflow will automatically:
+   - Bump version
+   - Publish to NPM
+   - Create GitHub release
+   - Push tags
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

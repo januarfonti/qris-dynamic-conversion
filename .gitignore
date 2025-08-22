@@ -27,6 +27,9 @@ Thumbs.db
 *.swo
 *~
 
+# Claude AI files
+.claude/
+
 # Environment files
 .env
 .env.local
